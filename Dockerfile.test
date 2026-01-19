@@ -2,4 +2,14 @@ FROM angular-build
 
 WORKDIR /app
 
-CMD ["ng", "test", "--watch=false", "--browsers=ChromeHeadless", "--no-sandbox"]
+# Trick: Podmieniamy binarkę chrome na skrypt, który zawsze dodaje --no-sandbox
+RUN mv /usr/bin/chromium-browser /usr/bin/chromium-browser-real && \
+    echo '#!/bin/sh' > /usr/bin/chromium-browser && \
+    echo 'exec /usr/bin/chromium-browser-real --no-sandbox --disable-setuid-sandbox --disable-dev-shm-usage "$@"' >> /usr/bin/chromium-browser && \
+    chmod +x /usr/bin/chromium-browser
+
+# Ustawiamy zmienną, żeby Angular wiedział gdzie jest Chrome
+ENV CHROME_BIN=/usr/bin/chromium-browser
+
+# Uruchamiamy testy (bez dodatkowych flag w CMD, bo skrypt powyżej już je ma)
+CMD ["ng", "test", "--watch=false", "--browsers=ChromeHeadless"]
