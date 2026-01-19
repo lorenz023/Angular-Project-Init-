@@ -1,0 +1,16 @@
+services:
+  build:
+    build:
+      context: .
+      dockerfile: Dockerfile.build
+    image: angular-build
+    container_name: angular-build
+
+  test:
+    build:
+      context: .
+      dockerfile: Dockerfile.test
+    image: angular-test
+    container_name: angular-test
+    depends_on:
+      - build

@@ -1,0 +1,5 @@
+FROM angular-build
+
+WORKDIR /app
+
+CMD ["ng", "test", "--watch=false", "--browsers=ChromeHeadless"]

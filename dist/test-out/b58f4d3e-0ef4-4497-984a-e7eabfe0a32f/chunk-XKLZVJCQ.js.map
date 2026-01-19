@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/modules/sample-module/services/sample.service.ts"],
+  "sourcesContent": ["import { Injectable } from '@angular/core';\n\n@Injectable({\n  providedIn: 'root'\n})\nexport class SampleService {\n\n  constructor() { }\n\n  sample(): boolean {\n    return true\n  }\n}\n"],
+  "mappings": ";;;;;;;;;;;IAKa;;;;;AALb;AAKO,IAAM,gBAAN,MAAMA,eAAa;MAExB,cAAA;MAAgB;MAEhB,SAAM;AACJ,eAAO;MACT;;;AANW,oBAAa,WAAA;MAHzB,WAAW;QACV,YAAY;OACb;OACY,aAAa;;;",
+  "names": ["SampleService"]
+}
