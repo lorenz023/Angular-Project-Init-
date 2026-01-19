@@ -19,14 +19,14 @@ pipeline {
         stage('Layer: Build') {
             steps {
                 echo "[EXEC] Building base runtime image..."
-                sh 'docker build -t angular-build -f dockerfile.build .'
+                sh 'docker build -t angular-build -f Dockerfile.build .'
             }
         }
 
         stage('Layer: Test') {
             steps {
                 echo "[EXEC] Running unit tests (Headless Chrome)..."
-                sh 'docker build -t angular-test -f dockerfile.test .'
+                sh 'docker build -t angular-test -f Dockerfile.test .'
                 // Przekierowanie logów do pliku artefaktu
                 sh 'docker run --rm angular-test > test_report.log 2>&1'
             }
