@@ -2,4 +2,4 @@ FROM angular-build
 
 WORKDIR /app
 
-CMD ["ng", "test", "--watch=false", "--browsers=ChromeHeadless"]
+CMD ["ng", "test", "--watch=false", "--browsers=ChromeHeadless", "--no-sandbox"]
