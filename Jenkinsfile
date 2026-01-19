@@ -35,7 +35,7 @@ pipeline {
         stage('Layer: Final') {
             steps {
                 echo "[EXEC] Compiling production image..."
-                sh 'docker build -t angular-final -f dockerfile .'
+                sh 'docker build -t angular-final -f Dockerfile .'
             }
         }
 
