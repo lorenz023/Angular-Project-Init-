@@ -1,9 +1,6 @@
-FROM node:20-alpine
+FROM nginx:alpine
 
-WORKDIR /app
+COPY dist/angular-sample-small-project /usr/share/nginx/html
 
-COPY . .
-
-RUN npm install -g @angular/cli
-RUN npm install
-RUN ng build
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
